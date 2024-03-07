@@ -5,29 +5,26 @@
 </head>
 <body>
     <h3>User3 수정</h3>
-    <a href="/ch05">메인</a>
-    <a href="/ch05/user3/list">목록</a>
-    <form action="/ch05/user3/modify" method="post">
+    <a href="/">메인</a>
+    <a href="/user3/list">목록</a>
+    <form action="/user3/modify" method="post">
         <table border="1">
             <tr>
                 <td>아이디</td>
-                <td><input type="text" name="uid" readonly value="${user3DTO.uid}"></td>
+                <td><input type="text" name="id" readonly value="${user3DTO.id}"></td>
             </tr>
             <tr>
                 <td>이름</td>
                 <td><input type="text" name="name" value="${user3DTO.name}"></td>
             </tr>
             <tr>
-                <td>생년월일</td>
-                <td><input type="date" name="birth" value="${user3DTO.birth}" ></td>
-            </tr>
-            <tr>
                 <td>휴대폰</td>
-                <td><input type="text" name="addr" value="${user3DTO.hp}"></td>
+                <td><input type="text" name="hp" value="${user3DTO.hp}" ></td>
             </tr>
+
             <tr>
-                <td>주소</td>
-                <td><input type="text" name="addr" value="${user3DTO.addr}"></td>
+                <td>나이</td>
+                <td><input type="number" name="age" value="${user3DTO.age}"></td>
             </tr>
             <tr>
                 <td colspan="2" align="right"><input type="submit" value="등록하기"></td>
