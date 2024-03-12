@@ -9030,3 +9030,5 @@ org.thymeleaf.exceptions.TemplateProcessingException: Could not parse as each: "
 2024-03-11T17:33:20.936+09:00  INFO 22724 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
 2024-03-11T17:33:20.936+09:00  INFO 22724 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
 2024-03-11T17:33:20.960+09:00  INFO 22724 --- [main] k.co.ch06.controller.MainControllerTest  : Started MainControllerTest in 1.441 seconds (process running for 2.066)
+2024-03-11T17:46:48.967+09:00  INFO 22572 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-22 - Shutdown initiated...
+2024-03-11T17:46:48.970+09:00  INFO 22572 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-22 - Shutdown completed.
