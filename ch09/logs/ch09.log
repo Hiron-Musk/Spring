@@ -5019,3 +5019,6 @@ org.hibernate.id.IdentifierGenerationException: Identifier of entity 'kr.co.ch09
 2024-03-14T16:26:37.740+09:00  INFO 7828 --- [ch09] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/ch09]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2024-03-14T16:26:37.740+09:00  INFO 7828 --- [ch09] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2024-03-14T16:26:37.742+09:00  INFO 7828 --- [ch09] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-03-14T17:49:55.694+09:00  INFO 7828 --- [ch09] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-03-14T17:49:55.695+09:00  INFO 7828 --- [ch09] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2024-03-14T17:49:55.699+09:00  INFO 7828 --- [ch09] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
