@@ -1,0 +1,56 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layout/defaultLayout.html">
+
+    <div class="container-fluid px-4" layout:fragment="content">
+        <h1 class="mt-4">게시판 목록</h1>
+        <ol class="breadcrumb mb-4">
+        </ol>
+
+        <!-- 내용 시작 -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                ooo 게시판 글목록
+            </div>
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>번호</th>
+                            <th>제목</th>
+                            <th>작성자</th>
+                            <th>조회수</th>
+                            <th>등록일</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Office</th>
+                            <th>Age</th>
+                            <th>Start date</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <tr th:each="articleDTO:${articleDTOs}">
+                            <td>[[${articleDTO.no}]]</td>
+                            <td>[[${articleDTO.title}]]</td>
+                            <td>[[${articleDTO.writer}]]</td>
+                            <td>[[${articleDTO.hit}]]</td>
+                            <td>[[${articleDTO.rdate}]]</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+        <div class="text-end">
+            <a th:href="@{/article/write}" class="btn btn-primary">글쓰기</a>
+        </div>
+        <!-- 내용 끝 -->
+    </div>
+</html>
