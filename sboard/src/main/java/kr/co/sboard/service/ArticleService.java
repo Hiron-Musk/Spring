@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -55,9 +56,31 @@ public class ArticleService {
                 .build();
     }
 
+    public ArticleDTO findById(int no){
+
+        Optional<Article> optArticle = articleRepository.findById(no);
+        log.info("findById...1");
+
+        ArticleDTO articleDTO = null;
+
+        if(optArticle.isPresent()){
+            log.info("findById...2");
+            Article article = optArticle.get();
+
+            log.info("findById...3 : " + article.toString());
+            articleDTO = modelMapper.map(article, ArticleDTO.class);
+            log.info("findById...4");
+        }
+
+        log.info("articleDTO : " + articleDTO.toString());
+
+        return articleDTO;
+    }
+
 
     public void insertArticle(ArticleDTO articleDTO){
 
+        // 파일 첨부 처리
         // 파일 첨부 처리
         List<FileDTO> files = fileService.fileUpload(articleDTO);
 

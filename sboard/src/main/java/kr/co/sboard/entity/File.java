@@ -7,6 +7,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
+@Setter
 @Getter
 @ToString
 @AllArgsConstructor
@@ -27,4 +28,9 @@ public class File {
 
     @CreationTimestamp
     private LocalDateTime rdate;
+
+
+
+
+
 }
