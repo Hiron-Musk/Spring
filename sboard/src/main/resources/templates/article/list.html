@@ -1,20 +1,18 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="/layout/defaultLayout.html">
+      layout:decorate="~{layout/defaultLayout}">
 
     <div class="container-fluid px-4" layout:fragment="content">
-        <h1 class="mt-4">게시판 목록</h1>
-        <ol class="breadcrumb mb-4">
-        </ol>
+        <h3 class="mt-4 mb-4">게시판 목록</h3>
 
         <!-- 내용 시작 -->
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
-                ooo 게시판 글목록
+                OOO 글목록
             </div>
             <div class="card-body">
-                <table id="datatablesSimple">
+                <table class="table table-hover">
                     <thead>
                         <tr>
                             <th>번호</th>
@@ -24,32 +22,44 @@
                             <th>등록일</th>
                         </tr>
                     </thead>
-                    <tfoot>
-                        <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                        </tr>
-                    </tfoot>
-                    <tbody>
-                        <tr th:each="articleDTO:${articleDTOs}">
-                            <td>[[${articleDTO.no}]]</td>
-                            <td>[[${articleDTO.title}]]</td>
-                            <td>[[${articleDTO.writer}]]</td>
-                            <td>[[${articleDTO.hit}]]</td>
-                            <td>[[${articleDTO.rdate}]]</td>
-                        </tr>
 
+                    <tbody>
+                        <tr th:each="article,index:${pageResponseDTO.dtoList}">
+                            <td>[[${pageResponseDTO.startNo-index.index}]]</td>
+                            <td>
+                                <a href="@{#}">[[${article.title}]]</a>
+                            </td>
+                            <td>[[${article.user.nick}]]</td>
+                            <td>[[${article.hit}]]</td>
+                            <td>[[${article.rdate}]]</td>
+                        </tr>
                     </tbody>
                 </table>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+
+                        <li th:if="${pageResponseDTO.prev}" class="page-item">
+                            <a class="page-link" th:href="@{/article/list(cate=${pageResponseDTO.cate},pg=${pageResponseDTO.start-1})}">&#60;</a>
+                        </li>
+
+                        <li th:each="num:${#numbers.sequence(pageResponseDTO.start, pageResponseDTO.end)}" class="page-item">
+                            <a class="page-link" th:href="@{/article/list(cate=${pageResponseDTO.cate},pg=${num})}">[[${num}]]</a>
+
+                        </li>
+
+                        <li th:if="${pageResponseDTO.next}" class="page-item">
+                            <a class="page-link" th:href="@{/article/list(cate=${pageResponseDTO.cate},pg=${pageResponseDTO.end+1})}">&#62;</a>
+                        </li>
+
+                    </ul>
+                </nav>
 
             </div>
 
         </div>
+
         <div class="text-end">
-            <a th:href="@{/article/write}" class="btn btn-primary">글쓰기</a>
+            <a th:href="@{/article/write(cate=${cate})}" class="btn btn-primary">글쓰기</a>
         </div>
         <!-- 내용 끝 -->
     </div>
