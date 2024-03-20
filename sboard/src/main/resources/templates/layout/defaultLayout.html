@@ -12,6 +12,7 @@
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link th:href="@{/css/styles.css}" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <script src="../../../../../../../../simple-datatables.js"></script>
     </head>
 
     <body class="sb-nav-fixed">
@@ -47,22 +48,22 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">게시판</div>
-                            <a class="nav-link" th:href="@{/article/list(cafe=notice)}">
+                            <a class="nav-link" th:href="@{/article/list(cate=notice)}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 <span>공지사항</span>
                             </a>
 
-                            <a class="nav-link" th:href="@{/article/list(cafe=free)}">
+                            <a class="nav-link" th:href="@{/article/list(cate=free)}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 <span>자유게시판</span>
                             </a>
 
-                            <a class="nav-link" th:href="@{/article/list(cafe=faq)}">
+                            <a class="nav-link" th:href="@{/article/list(cate=faq)}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 <span>자주묻는질문</span>
                             </a>
 
-                            <a class="nav-link" th:href="@{/article/list(cafe=qna)}">
+                            <a class="nav-link" th:href="@{/article/list(cate=qna)}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 <span>묻고답하기</span>
                             </a>
@@ -111,7 +112,7 @@
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
                             <div class="text-muted">Copyright &copy; heega [[${appName}]] 2024</div>
-                            <div>
+                            <div layout:fragment="appVersion">
                                 <a href="#">[[${appVersion}]]</a>
                             </div>
                         </div>
@@ -124,7 +125,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
         <script th:src="@{/assets/demo/chart-area-demo.js}"></script>
         <script th:src="@{/assets/demo/chart-bar-demo.js}"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
         <script th:src="@{/js/datatables-simple-demo.js}"></script>
     </body>
 </html>
