@@ -31,8 +31,7 @@ public class ArticleDTO {
     private List<MultipartFile> files;
 
     private UserDTO user;
-
-
+    private List<FileDTO> fileList;
 
 
 }

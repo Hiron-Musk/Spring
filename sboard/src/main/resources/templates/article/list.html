@@ -27,9 +27,9 @@
                         <tr th:each="article,index:${pageResponseDTO.dtoList}">
                             <td>[[${pageResponseDTO.startNo-index.index}]]</td>
                             <td>
-                                <a href="@{#}">[[${article.title}]]</a>
+                                <a th:href="@{/article/view(no=${article.no})}">[[${article.title}]]</a>
                             </td>
-                            <td>[[${article.user.nick}]]</td>
+                            <td>[[${article.writer}]]</td>
                             <td>[[${article.hit}]]</td>
                             <td>[[${article.rdate}]]</td>
                         </tr>
