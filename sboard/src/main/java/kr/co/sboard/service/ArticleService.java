@@ -81,7 +81,6 @@ public class ArticleService {
     public void insertArticle(ArticleDTO articleDTO){
 
         // 파일 첨부 처리
-        // 파일 첨부 처리
         List<FileDTO> files = fileService.fileUpload(articleDTO);
 
         // 파일 첨부 갯수 초기화
@@ -107,5 +106,21 @@ public class ArticleService {
         }
     }
 
+    public void insertComment(int parent,String content){
 
-}
+        Optional<Article>article = articleRepository.findById(parent);
+        if (article.isPresent()) {
+            Article parentArticle = article.get();
+
+
+            parentArticle.setContent(content);
+
+
+            // 변경된 부모 게시물을 저장합니다.
+            articleRepository.save(parentArticle);
+        }
+    }
+
+    }
+
+

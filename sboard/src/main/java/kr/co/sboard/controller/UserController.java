@@ -26,6 +26,7 @@ public class UserController {
     @GetMapping("/user/login")
     public String login(@ModelAttribute("success") String success){
         // 매개변수 success에 @ModelAttribute 선언으로 View 참조할 수 있음
+
         return "/user/login";
     }
 

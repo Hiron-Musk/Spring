@@ -22,9 +22,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Slf4j
 @Service
@@ -85,9 +83,12 @@ public class FileService {
         // 저장한 파일 정보 리스트 반환
         return files;
     }
+
+
     @Transactional
     public ResponseEntity<?> fileDownload(int fno)  {
-        //파일 조회
+
+        // 파일 조회
         kr.co.sboard.entity.File file = fileRepository.findById(fno).get();
 
         try {
@@ -102,8 +103,8 @@ public class FileService {
             headers.add(HttpHeaders.CONTENT_TYPE, contentType);
             Resource resource = new InputStreamResource(Files.newInputStream(path));
 
-            //파일 다운로드 횟수 업데이트
-            file.setDownload(file.getDownload()+1);
+            // 파일 다운로드 카운트 업데이트
+            file.setDownload(file.getDownload() + 1);
             fileRepository.save(file);
 
             return new ResponseEntity<>(resource, headers, HttpStatus.OK);
@@ -112,5 +113,17 @@ public class FileService {
             log.error("fileDownload : " + e.getMessage());
             return new ResponseEntity<>(null, null, HttpStatus.NOT_FOUND);
         }
+    }
+
+    public ResponseEntity<?> fileDownloadCount(int fno)  {
+
+        // 파일 조회
+        kr.co.sboard.entity.File file = fileRepository.findById(fno).get();
+
+        // 다운로드 카운트 Json 생성
+        Map<String, Object> resultMap = new HashMap<>();
+        resultMap.put("count", file.getDownload());
+
+        return ResponseEntity.ok().body(resultMap);
     }
 }
