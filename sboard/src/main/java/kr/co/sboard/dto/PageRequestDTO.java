@@ -1,5 +1,6 @@
 package kr.co.sboard.dto;
 
+
 import lombok.*;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
