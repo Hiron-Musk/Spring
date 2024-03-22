@@ -15,6 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RestController
 public class CommentController {
+
     private final CommentService commentService;
 
     @GetMapping("/comment/{no}")
@@ -43,8 +44,6 @@ public class CommentController {
 
         return commentService.updateComment(articleDTO);
     }
-
-
 
 
 }

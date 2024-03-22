@@ -1,6 +1,7 @@
 package kr.co.sboard.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
+import kr.co.sboard.config.AppInfo;
 import kr.co.sboard.dto.ArticleDTO;
 import kr.co.sboard.dto.PageRequestDTO;
 import kr.co.sboard.dto.PageResponseDTO;
@@ -11,11 +12,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @Slf4j
@@ -24,6 +23,7 @@ import java.util.List;
 public class ArticleController {
 
     private final ArticleService articleService;
+    private final AppInfo appInfo;
 
 
     /*
@@ -37,6 +37,7 @@ public class ArticleController {
         log.info("pageResponseDTO : " + pageResponseDTO);
 
         model.addAttribute(pageResponseDTO);
+        model.addAttribute(appInfo);
 
         return "/article/list";
     }
@@ -70,5 +71,8 @@ public class ArticleController {
 
         return "/article/view";
     }
+
+    // fileDownload 메서드 FileController로 이동
+
 
 }

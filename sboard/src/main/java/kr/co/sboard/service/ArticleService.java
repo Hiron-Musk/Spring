@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -22,7 +23,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -44,16 +44,16 @@ public class ArticleService {
 
 
         List<ArticleDTO> dtoList = pageArticle.getContent().stream()
-                .map(entity -> modelMapper.map(entity, ArticleDTO.class))
-                .toList();
+                                    .map(entity -> modelMapper.map(entity, ArticleDTO.class))
+                                    .toList();
 
         int total = (int) pageArticle.getTotalElements();
 
         return PageResponseDTO.builder()
-                .pageRequestDTO(pageRequestDTO)
-                .dtoList(dtoList)
-                .total(total)
-                .build();
+                        .pageRequestDTO(pageRequestDTO)
+                        .dtoList(dtoList)
+                        .total(total)
+                        .build();
     }
 
     public ArticleDTO findById(int no){
@@ -81,6 +81,7 @@ public class ArticleService {
     public void insertArticle(ArticleDTO articleDTO){
 
         // 파일 첨부 처리
+        // 파일 첨부 처리
         List<FileDTO> files = fileService.fileUpload(articleDTO);
 
         // 파일 첨부 갯수 초기화
@@ -106,21 +107,6 @@ public class ArticleService {
         }
     }
 
-    public void insertComment(int parent,String content){
-
-        Optional<Article>article = articleRepository.findById(parent);
-        if (article.isPresent()) {
-            Article parentArticle = article.get();
-
-
-            parentArticle.setContent(content);
-
-
-            // 변경된 부모 게시물을 저장합니다.
-            articleRepository.save(parentArticle);
-        }
-    }
-
-    }
-
-
+    // fileUpload 메서드 -> FileService 클래스로 이동
+    
+}

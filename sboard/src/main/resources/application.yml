@@ -23,7 +23,7 @@ spring:
 
     datasource:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        password: abc1234
+        password: Kjh5823!
         url: jdbc:mysql://127.0.0.1:3306/jboard
         username: jsa7868
     devtools:
@@ -32,12 +32,11 @@ spring:
         restart:
             enabled: false
 
-    # 이메일 설정
     mail:
         host: smtp.gmail.com
         port: 587
         username: jsa7868@gmail.com
-        password: wvzy hlky mswy muqh
+        password: pybw goac fyle uwje
         properties:
           mail:
               smtp:
@@ -49,7 +48,6 @@ spring:
     jpa:
         database: mysql
         hibernate:
-            # 배포할 때는 none, 개발할 때는 update
             ddl-auto: update
             naming:
                 physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
@@ -58,22 +56,14 @@ spring:
                 format_sql: true
                 show_sql: true
 
-    # 파일 업로드 설정
     servlet:
       multipart:
           location: uploads/
           max-file-size: 10MB
 
-# 파일 경로 설정
+    thymeleaf:
+        prefix: classpath:/templates
+
 file:
     upload:
         path: uploads/
-
-
-
-
-
-
-
-
-
