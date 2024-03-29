@@ -72,7 +72,12 @@ public class ArticleController {
         return "/article/view";
     }
 
-    // fileDownload 메서드 FileController로 이동
+    @GetMapping("/article/modify")
+    public String modify(int no,Model model){
+        ArticleDTO articleDTO=articleService.findById(no);
+        model.addAttribute(articleDTO);
+        return "/article/modify";
+    }
 
 
 }
