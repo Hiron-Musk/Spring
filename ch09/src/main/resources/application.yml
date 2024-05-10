@@ -19,8 +19,8 @@ spring:
         name: ch09
     datasource:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        password: abc1234
-        url: jdbc:mysql://127.0.0.1:3306/jboard
+        password: Kjh5823!
+        url: jdbc:mysql://127.0.0.1:3306/studydb
         username: jsa7868
     devtools:
         livereload:

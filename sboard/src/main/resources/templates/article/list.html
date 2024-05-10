@@ -25,8 +25,8 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="article, index:${pageResponseDTO.dtoList}">
-                    <td>[[${pageResponseDTO.startNo - index.index}]]</td>
+                <tr th:each="article, index:${}">
+                    <td>[[${pageResponseDTO.startNo pageResponseDTO.dtoList- index.index}]]</td>
                     <td>
                         <a th:href="@{/article/view(no=${article.no})}">[[${article.title}]]</a>
                     </td>
